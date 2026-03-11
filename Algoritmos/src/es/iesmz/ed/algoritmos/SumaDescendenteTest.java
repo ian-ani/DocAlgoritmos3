@@ -2,8 +2,8 @@ package es.iesmz.ed.algoritmos;
 
 /* LIBRERIAS */
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import org.testng.annotations.Test;
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Tests unitarios de SumaDescendente
