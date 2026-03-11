@@ -1,14 +1,14 @@
 package es.iesmz.ed.algoritmos;
 
+/* LIBRERIAS */
+
 import java.util.ArrayList;
 
 public class CalculoMental {
     /* ATRIBUTOS */
 
     // Constantes
-    private static final int kMAX_VALOR = 200000;
-    //private static final String kREGEX_VALORES = "(?:[+-]?\\s?\\d+)";
-    private static final String kREGEX_VALORES = "(\\s?[^\\d+-])";
+    private static final String kREGEX_VALORES = "(?=[+-])";
 
     // Variables
     private String secuencia;
@@ -44,19 +44,43 @@ public class CalculoMental {
 
     /* OTROS METODOS */
 
-    // TODO: return ArrayList<String>
-    public void calcula() {
-        // Prueba: 15 + 8 − 7 + 10 − 3
-        // Debe devolver: 23, 16, 26, 23.
+    public ArrayList<String> calcula() {
+        // ArrayList a devolver
+        ArrayList<String> calculos = new ArrayList<>();
 
-        // Validar que la suma no sea mayor a 200000, ni ninguno de sus valores?
+        // Eliminar espacios
+        secuencia = secuencia.replaceAll(" ", "");
 
-        // Separar por valores (incluido el simbolo)
+        // Separar por valores (los valores tienen el simbolo incluido)
         String[] separarSecuencia = secuencia.split(kREGEX_VALORES);
 
-        // Iterar por cada elemento
-        for (String s: separarSecuencia) {
-            System.out.println(s);
+        // Acumulacion de operaciones (empezando el total con el primer numero)
+        // Si no se hiciera asi y se inicializara a 0, aunque no cambia el resultado
+        // Si se mostraria como operacion parcial
+        int total = Integer.parseInt(separarSecuencia[0]);
+
+        // Iterar por cada elemento (empezando despues del primer numero)
+        for (int i = 1; i < separarSecuencia.length; i++) {
+            // El metodo parseInt interpreta el simbolo del numero
+            // Asi que al sumar, si es negativo aplica la regla que toca
+            total += Integer.parseInt(separarSecuencia[i]);
+
+            // Anadir al ArrayList
+            calculos.add(String.valueOf(total));
         }
+
+        return calculos;
+    }
+
+    public String formatearCalcula() {
+        String calculos;
+
+        // Anadir comas entre los numeros
+        calculos = String.join(", ", calcula());
+
+        // Anadir punto final
+        calculos += ".";
+
+        return calculos;
     }
 }
