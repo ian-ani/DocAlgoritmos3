@@ -70,43 +70,67 @@ public class Sudoku {
         // Los Set no admiten duplicados :)
         Set<Integer> numerosFila = new HashSet<>();
         Set<Integer> numerosColumna = new HashSet<>();
+        Set<Integer> numerosBloque = new HashSet<>();
 
         // Recorrer filas, luego columnas -> fila fija, columna varia
         for (int fila = 0; fila < tabla.length; fila++) {
             for (int columna = 0; columna < tabla[fila].length; columna++) {
-                // Siempre es tabla[fila][columna], aunque...
-                numerosColumna.add(tabla[fila][columna]);
-            }
+                // Inicializar celda
+                int celda = tabla[fila][columna];
 
-            // Si el tamano del Set no es 9 al final de la iteracion de columnas (bucle interno),
-            // es porque el Set ha tenido algun numero repetido
-            if (numerosColumna.size() < 9) {
-                return false;
+                // Comprobar que este dentro del rango de 1 a 9
+                if (celda < 1 || celda > 9) return false;
+
+                // Si no puede insertar el valor en el set, es porque ya existe
+                // Siempre es tabla[fila][columna], aunque...
+                if (!numerosColumna.add(celda)) return false;
             }
 
             // Reiniciar Set en cada iteracion exterior
-            numerosColumna = new HashSet<>();
+            numerosColumna.clear();
         }
 
         // Recorrer columnas, luego filas -> columna fija, fila varia
         for (int columna = 0; columna < tabla.length; columna++) {
             for (int fila = 0; fila < tabla[columna].length; fila++) {
-                // ...el orden cambie
-                numerosFila.add(tabla[fila][columna]);
-            }
+                // Inicializar celda
+                int celda = tabla[fila][columna];
 
-            // Si el tamano del Set no es 9 al final de la iteracion de filas (bucle interno),
-            // es porque el Set ha tenido algun numero repetido
-            if (numerosFila.size() < 9) {
-                return false;
+                // Comprobar que este dentro del rango de 1 a 9
+                if (celda < 1 || celda > 9) return false;
+
+                // ...el orden cambie
+                if (!numerosFila.add(celda)) return false;
             }
 
             // Reiniciar Set en cada iteracion exterior
-            numerosFila = new HashSet<>();
+            numerosFila.clear();
         }
 
-        // Nota: no compruebo el 3x3 porque no hace falta, si hay un duplicado en un 3x3 es
-        // que en una fila o en una columna tambien lo va a haber
+        // Comprobar tambien el 3x3
+        // 'Saltos' de 3 en 3
+        for (int fila = 0; fila < tabla.length; fila+=3) {
+            for (int columna = 0; columna < tabla[fila].length; columna+=3) {
+                // 'Rango' de 3
+                for (int bloqueFila = 0; bloqueFila < tabla[fila].length / 3; bloqueFila++) {
+                    for (int bloqueColumna = 0; bloqueColumna < tabla[fila].length / 3; bloqueColumna++) {
+                        // Desplazamiento dentro del bloque (celda)
+                        // Parecido al desplazamiento en filtros de imagen pero sin restar nada (la referencia
+                        // del sudoku es la esquina superior izquierda y no el centro del kernel/bloque)
+                        int celda = tabla[bloqueFila + fila][bloqueColumna + columna];
+
+                        // Comprobar que este dentro del rango de 1 a 9
+                        if (celda < 1 || celda > 9) return false;
+
+                        // Comprobar si duplicado
+                        if (!numerosBloque.add(celda)) return false;
+                    }
+                }
+
+                // Reiniciar Set en cada iteracion exterior
+                numerosBloque.clear();
+            }
+        }
 
         // Si llega hasta aqui, to-do ha debido ir bien
         return true;
