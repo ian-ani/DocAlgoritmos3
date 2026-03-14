@@ -5,6 +5,11 @@ package es.iesmz.ed.algoritmos;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests unitarios de CalculoMental
+ * @author Iris Auñón Navarro
+ */
+
 public class CalculoMentalTest {
     /**
      * Método comprobarCalculo. Comprueba si las operaciones proporcionadas dan el resultado esperado.
