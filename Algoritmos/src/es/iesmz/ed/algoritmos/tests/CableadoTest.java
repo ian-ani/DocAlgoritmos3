@@ -1,7 +1,8 @@
-package es.iesmz.ed.algoritmos;
+package es.iesmz.ed.algoritmos.tests;
 
 /* LIBRERIAS */
 
+import es.iesmz.ed.algoritmos.Cableado;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
