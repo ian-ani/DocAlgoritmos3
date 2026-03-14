@@ -1,6 +1,13 @@
 package es.iesmz.ed.algoritmos;
 
+/* LIBRERIAS */
+
 import java.util.Arrays;
+
+/**
+ * Clase Cableado que comprueba si hay el mismo número de conectores macho y conectores hembra.
+ * @author Iris Auñón Navarro
+ */
 
 public class Cableado {
     /* ATRIBUTOS */
@@ -9,17 +16,32 @@ public class Cableado {
 
     /* CONSTRUCTOR */
 
+    /**
+     * Constructor para guardar los conectores a comprobar.
+     * @param conectores String[]; este parámetro recibe un array de conectores a comprobar.
+     */
+
     public Cableado(String[] conectores) {
         setConectores(conectores);
     }
 
     /* GETTERS */
 
+    /**
+     * Método que devuelve el array de conectores.
+     * @return conectores: String[]; devuelve el array de conectores.
+     */
+
     public String[] getConectores() {
         return conectores;
     }
 
     /* SETTERS */
+
+    /**
+     * Método que cambia el valor de los conectores.
+     * @param conectores String[]; cambia el array de conectores por otro.
+     */
 
     public void setConectores(String[] conectores) {
         if (conectores == null) {
@@ -31,6 +53,11 @@ public class Cableado {
 
     /* METODO TOSTRING */
 
+    /**
+     * Método toString. Para poder mostrar los conectores guardados.
+     * @return String; muestra los conectores.
+     */
+
     @Override
     public String toString() {
         return String.format("""
@@ -39,6 +66,11 @@ public class Cableado {
     }
 
     /* OTROS METODOS */
+
+    /**
+     * Método sePuedeConectar. Permite comprobar si hay un mismo número de conectores macho (M) y hembra (H).
+     * @return boolean; devuelve si hay el mismo número de conectores macho y hembra.
+     */
 
     public boolean sePuedeConectar() {
         // Inicio de valores

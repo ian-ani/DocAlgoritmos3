@@ -4,6 +4,11 @@ package es.iesmz.ed.algoritmos;
 
 import java.util.ArrayList;
 
+/**
+ * Clase CalculoMental que calcula una secuencia de sumas y restas dadas, mostrando cada operación intermedia.
+ * @author Iris Auñón Navarro
+ */
+
 public class CalculoMental {
     /* ATRIBUTOS */
 
@@ -15,17 +20,32 @@ public class CalculoMental {
 
     /* CONSTRUCTOR */
 
+    /**
+     * Constructor para guardar las operaciones a calcular.
+     * @param secuencia String; este parámetro recibe una secuencia de números a calcular.
+     */
+
     public CalculoMental(String secuencia) {
         this.secuencia = secuencia;
     }
 
     /* GETTERS */
 
+    /**
+     * Método que devuelve la secuencia de números.
+     * @return secuencia: String; devuelve la secuencia de números.
+     */
+
     public String getSecuencia() {
         return secuencia;
     }
 
     /* SETTERS */
+
+    /**
+     * Método que cambia el valor de la secuencia.
+     * @param secuencia String[]; cambia una secuencia por otra.
+     */
 
     public void setSecuencia(String secuencia) {
         if (secuencia == null || secuencia.isBlank()) {
@@ -37,12 +57,22 @@ public class CalculoMental {
 
     /* METODO TOSTRING */
 
+    /**
+     * Método toString. Para poder mostrar la secuencia guardada.
+     * @return String; muestra la secuencia.
+     */
+
     @Override
     public String toString() {
         return String.format("Secuencia a operar: %s\n", secuencia);
     }
 
     /* OTROS METODOS */
+
+    /**
+     * Método calcula. Permite calcular una secuencia de operaciones y obtener sus resultados intermedios.
+     * @return ArrayList de tipo String; devuelve los cálculos intermedios de la secuencia dada.
+     */
 
     public ArrayList<String> calcula() {
         // ArrayList a devolver
@@ -71,6 +101,11 @@ public class CalculoMental {
 
         return calculos;
     }
+
+    /**
+     * Método formatearCalcula. Muestra las operaciones de la secuencia con formato.
+     * @return String; devuelve las operaciones intermedias con formato.
+     */
 
     public String formatearCalcula() {
         String calculos;

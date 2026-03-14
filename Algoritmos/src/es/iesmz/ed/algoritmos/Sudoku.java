@@ -5,6 +5,11 @@ package es.iesmz.ed.algoritmos;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Clase Sudoku que comprueba si el sudoku proporcinado es correcto (en base a filas, columnas y bloques 3x3) o no.
+ * @author Iris Auñón Navarro
+ */
+
 public class Sudoku {
     /* ATRIBUTOS */
 
@@ -12,11 +17,21 @@ public class Sudoku {
 
     /* CONSTRUCTOR */
 
+    /**
+     * Constructor para guardar la tabla del sudoku.
+     * @param tabla int[][]; este parámetro recibe una matriz de filas y columnas a comprobar dentro de la tabla.
+     */
+
     public Sudoku(int[][] tabla) {
-        this.tabla = tabla;
+        setTabla(tabla);
     }
 
     /* GETTERS */
+
+    /**
+     * Método que devuelve la tabla en forma de matriz.
+     * @return tabla: int[][]; devuelve el sudoku guardado.
+     */
 
     public int[][] getTabla() {
         return tabla;
@@ -24,11 +39,21 @@ public class Sudoku {
 
     /* SETTERS */
 
+    /**
+     * Método que cambia la tabla del sudoku.
+     * @param tabla int[][]; cambia un sudoku por otro.
+     */
+
     public void setTabla(int[][] tabla) {
         this.tabla = tabla;
     }
 
     /* METODO TOSTRING */
+
+    /**
+     * Método toString. Para poder mostrar el sudoku formateado.
+     * @return String; muestra el sudoku guardado.
+     */
 
     @Override
     public String toString() {
@@ -65,6 +90,13 @@ public class Sudoku {
     }
 
     /* OTROS METODOS */
+
+    /**
+     * Método esCorrecto. Permite comprobar si un sudoku dado es correcto: para ser correcto debe tener números del
+     * 1 al 9 tanto por cada fila como por cada columna, y también en bloques de 3x3. No admite repetidos en ninguna
+     * de ellas.
+     * @return boolean; devuelve si el sudoku dado es correcto.
+     */
 
     public boolean esCorrecto() {
         // Los Set no admiten duplicados :)
