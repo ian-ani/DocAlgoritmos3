@@ -2,9 +2,9 @@ package es.iesmz.ed.algoritmos;
 
 /* LIBRERIAS */
 
-import org.testng.annotations.Test;
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests unitarios de Polidivisible
